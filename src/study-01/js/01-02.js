@@ -1,4 +1,6 @@
 function init() {
+    /* ***************x轴的正半轴是屏幕往里面   y轴的正半轴是屏幕往上面   z轴的正半轴是屏幕往右边  我的角度来看***************** */
+    /* 粉色表示 x轴   蓝色表示z轴    绿色表y轴 */
     // create a scene, that will hold all our elements such as objects, cameras and lights.
     var scene = new THREE.Scene();
 
@@ -21,8 +23,8 @@ function init() {
     });
     var plane = new THREE.Mesh(planeGeometry, planeMaterial); //定义平面
 
-    // rotate and position the plane
-    plane.rotation.x = -0.5 * Math.PI; //定义了平面的倾斜角度
+    // rotate and position the plane 
+    plane.rotation.x = -0.5 * Math.PI; //定义了平面的倾斜角度  默认是xy轴   -表示向x轴逆时针选择角度  目前测试范围为 -0.7-0.2有效
     plane.position.set(15, 0, 0); //定义了平面的位置
 
     // add the plane to the scene
@@ -32,7 +34,7 @@ function init() {
     var cubeGeometry = new THREE.BoxGeometry(8, 8, 8); //球的大小
     var cubeMaterial = new THREE.MeshBasicMaterial({ //球的材质
         color: 0xFF0000,
-        // wireframe: true // 如果wireframe设置为false会显示为实体  如果为true会显示为 线体
+        wireframe: true // 如果wireframe设置为false会显示为实体  如果为true会显示为 线体
     });
     var cube = new THREE.Mesh(cubeGeometry, cubeMaterial);
 
@@ -58,6 +60,7 @@ function init() {
 
     // position and point the camera to the center of the scene
     camera.position.set(-30, 40, 30);
+    // camera.position.set(0, 0, -100); //y表示相机在电脑屏幕的上方   z表示往电脑右边的角度    x表示电脑正前方角度
     camera.lookAt(scene.position);
 
     // add the output of the renderer to the html element
